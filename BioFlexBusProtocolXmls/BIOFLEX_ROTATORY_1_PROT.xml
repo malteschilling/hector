@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<protocol name="BIOFLEX_ROTATORY_1_PROT" id="13"> 
+  <property name="driveActivation" requestid="4" transmittable="true"> 
+         <doc>The activation of the drive. "0" deactivates the drive, everything else activates the drive.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint16" clienttype="uint16" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="resetState" requestid="30" transmittable="true"> 
+         <doc>Get/Set the reset state of the drive. If the state changes from 0 to something else, the drive will be reset and the value will be reset to the default of 1.</doc>
+         <maxage>-1</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+  </property>
+  <property name="usdWriteState" requestid="34" transmittable="true"> 
+         <doc>Get/Set the write state of the persistently saved data on the µSD card. If the state changes the values will be written.</doc>
+         <maxage>-1</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+  </property>
+  <property name="rotorPosition" requestid="40"> 
+         <doc>the rotor position in encoder ticks</doc>
+         <maxage>0</maxage>
+         <data hosttype="int16" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+  </property>
+  <property name="rotorPositionOffset" requestid="44" transmittable="true"> 
+         <doc>the rotor offset in encoder ticks</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint16" clienttype="uint16" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+  </property>
+  
+  <property name="multiTurnRotorPosition" requestid="48" transmittable="false"> 
+         <doc></doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int32" hostlower="-pi" hostupper="pi" clientlower="-8192*25" clientupper="8191*25" limit="false"/>
+  </property>
+
+  <property name="multiTurnRotorPositionOffset" requestid="50" transmittable="false"> 
+         <doc></doc>
+         <maxage>0</maxage>
+         <data hosttype="int32" clienttype="int32" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+  </property>
+
+  <property name="inputPosition" requestid="60"> 
+         <doc>the input position (the angle between the housing of the actuator and the input side of the elastic coupling)</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+  </property>
+    <property name="torsion" requestid="70"> 
+         <doc>the torsion of the elastic element</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+  </property>
+  <property name="torsionMeasured" requestid="72"> 
+         <doc>the measured (not offset corrected) torsion of the elastic element</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+  </property>
+  <property name="outputPosition" requestid="100"> 
+         <doc>the output position (the angle between the housing of the actuator and the next segment)</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+  </property>
+  <property name="outputPositionMeasured" requestid="102"> 
+         <doc>the measured (not offset corrected) output position of the drive</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+  </property>  
+</protocol>

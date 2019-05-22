@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<protocol name="BIOFLEX_ROTATORY_CONTROL_1_PROT" id="16"> 
+    <property name="desiredValue_ISC" requestid="80" transmittable="true" autoconfirm="false"> 
+         <doc>the desired input speed (angular velocity for the input side of the elastic element inside the actuator)</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+    </property>
+  
+    <property name="desiredPosition" requestid="84" transmittable="true" autoconfirm="false"> 
+         <doc>the desired input position</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+    </property>
+    <property name="springConstant" requestid="160" transmittable="true" autoconfirm="false"> 
+         <doc>Set spring constant for the drive</doc>
+         <maxage>0</maxage>
+         <data hosttype="int16" clienttype="int16" hostlower="0" hostupper="10000" clientlower="0" clientupper="10000" limit="false"/>
+    </property>
+    <property name="dampingConstant" requestid="164" transmittable="true" autoconfirm="false"> 
+         <doc>Set damping constant for the drive</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="10000" limit="false"/>
+    </property>
+  
+</protocol>

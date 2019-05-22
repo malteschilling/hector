@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<protocol name="BIOFLEX_ROTATORY_ERROR_PROT" id="15"> 
+  <property name="fatalError" requestid="0" transmittable="true"> 
+         <doc>Error message for TMC603A</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="torsionLimits" requestid="40" transmittable="true"> 
+         <doc>The minimum and maximum torsion limits in radiant</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+  </property>
+  
+  <property name="outputPositionLimits" requestid="48" transmittable="true"> 
+         <doc>The minimum and maximum output position limits in radiant</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+         <data hosttype="float" clienttype="int16" hostlower="-pi" hostupper="pi" clientlower="-8192" clientupper="8191" limit="true"/>
+  </property>
+  
+  <property name="errorState" requestid="70" transmittable='true'> 
+         <doc>Error state of the drive</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint16" clienttype="uint16" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+  </property>
+  
+  <property name="tmc603aError" requestid="80"> 
+         <doc>Error message for TMC603A</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="tmc603aErrorEnabled" requestid="82" transmittable="true"> 
+         <doc>Check if error messaging for TMC603A is enabled.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="watchdogTimerError" requestid="86"> 
+         <doc>Error message for watchdog timer error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="watchdogTimerErrorEnabled" requestid="88" transmittable="true"> 
+         <doc>Check if error messaging for watchdog timer is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="communicationTimeoutError" requestid="92"> 
+         <doc>Error message for communication timeout error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="communicationTimeoutErrorEnabled" requestid="94"> 
+         <doc>Check if error messaging for communication timeout is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="torsionMeasurementError" requestid="98"> 
+         <doc>Error message for torsion measurement error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="torsionMeasurementErrorEnabled" requestid="100" transmittable="true"> 
+         <doc>Check if error messaging for torsion measurement is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="outputPositionMeasurementError" requestid="104"> 
+         <doc>Error message for output position measurement error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="outputPositionMeasurementErrorEnabled" requestid="106" transmittable="true"> 
+         <doc>Check if error messaging for TMC603A is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="overvoltageError" requestid="110"> 
+         <doc>Error message for overvoltage error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="overvoltageErrorEnabled" requestid="112" transmittable="true"> 
+         <doc>Check if error messaging for overvoltage is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="undervoltageError" requestid="116"> 
+         <doc>Error message for undervoltage error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="undervoltageErrorEnabled" requestid="118" transmittable="true"> 
+         <doc>Check if error messaging for undervoltage is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="rotorOvertemperatureError" requestid="122"> 
+         <doc>Error message for rotor overtemperature error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="rotorOvertemperatureErrorEnabled" requestid="124" transmittable="true"> 
+         <doc>Check if error messaging for rotor overtemperature is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="driverOvertemperatureError" requestid="128"> 
+         <doc>Error message for driver overtemperature error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="driverOvertemperatureErrorEnabled" requestid="130" transmittable="true"> 
+         <doc>Check if error messaging for driver overtemperature is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="inputPositionError" requestid="134"> 
+         <doc>Error message for input position error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="inputPositionErrorEnabled" requestid="136" transmittable="true"> 
+         <doc>Check if error messaging for input position is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="torsionError" requestid="140"> 
+         <doc>Error message for torsion error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="torsionErrorEnabled" requestid="142" transmittable="true"> 
+         <doc>Check if error messaging for torsion is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="outputPositionError" requestid="146"> 
+         <doc>Error message for output position error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="outputPositionErrorEnabled" requestid="148" transmittable="true"> 
+         <doc>Check if error messaging for output position is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="i2cError" requestid="152"> 
+         <doc>Error message for i2c error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  <property name="i2cErrorEnabled" requestid="154" transmittable="true"> 
+         <doc>Check if error messaging for i2c is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+  <property name="rotorPositionMeasurementError" requestid="158"> 
+         <doc>Error message for output position measurement error.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+  
+  <property name="rotorPositionMeasurementErrorEnabled" requestid="160" transmittable="true"> 
+         <doc>Check if error messaging for TMC603A is enabled .</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="true"/>
+  </property>
+
+
+
+</protocol>

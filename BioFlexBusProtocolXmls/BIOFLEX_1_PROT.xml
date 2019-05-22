@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<protocol name="BIOFLEX_1_PROT" id="1"> 
+  <property name="id" requestid="0" transmittable="false"> 
+         <doc>The unique identification of a client.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+  </property>
+</protocol>

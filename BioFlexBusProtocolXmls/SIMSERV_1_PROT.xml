@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<protocol name="SIMSERV_1_PROT" id="12"> 
+   <property name="resetTimerState" requestid="0" transmittable="true" autoconfirm="true"> 
+         <doc>Get the last relative timer change/set the timer to a time relative to the last timer state. This command uses millisecond (ms=Ms) resolution.</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+   </property>
+   <property name="relTimerMs" requestid="10" transmittable="true" autoconfirm="true" timetowaitforanswer="10"> 
+         <doc>Get the last relative timer change/set the timer to a time relative to the last timer state. This command uses millisecond (ms=Ms) resolution.</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1000" limit="false"/>
+   </property>
+   <property name="relTimerUs" requestid="14" transmittable="true" autoconfirm="true" timetowaitforanswer="10"> 
+         <doc>Get the last relative timer change/set the timer to a time relative to the last timer state. This command uses microsecond (µs=Us) resolution.</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1000000" limit="false"/>
+   </property>
+   <property name="absTimerMs" requestid="18" transmittable="true" autoconfirm="true" timetowaitforanswer="10"> 
+         <doc>Get the absolute timer state/set the timer to a an absolute time. This command uses millisecond (ms=Ms) resolution.</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int32" hostlower="0" hostupper="1" clientlower="0" clientupper="1000" limit="false"/>
+   </property>
+   <property name="absTimerUs" requestid="22" transmittable="true" autoconfirm="true" timetowaitforanswer="10"> 
+         <doc>Get the absolute timer state/set the timer to a an absolute time. This command uses microsecond (µs=Us) resolution.</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int64" hostlower="0" hostupper="1" clientlower="0" clientupper="1000000" limit="false"/>
+   </property>
+   <property name="geometryXml" requestid="30" transmittable="true" autoconfirm="false" timetowaitforanswer="10"> 
+         <doc>Get the last transmitted xml data/Send new xml data</doc>
+         <maxage>0</maxage>
+         <data hosttype="string" clienttype="string"/>
+   </property>
+   <property name="broadcastState" requestid="40" transmittable="true" autoconfirm="false"> 
+         <doc>Get/set the broadcast state. The active broadcast state defines that all receives/send messages are also send to the client - no matter whether it is the correct receiver or not.</doc>
+         <maxage>0</maxage>
+         <data hosttype="bool" clienttype="bool"/>
+   </property>
+
+  <property name="robotTransparency" requestid="60" transmittable="true" autoconfirm="false"> 
+         <doc>Set transparency of robot</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="10000" limit="false"/>
+  </property>
+  <property name="captureFrame" requestid="64" transmittable="true" autoconfirm="false"> 
+         <doc>Capture frame in dynamic simulator. Gives as a number the iteration</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="10000" limit="false"/>
+  </property>
+   <property name="internalModelGlobalPosition" requestid="70" transmittable="true" autoconfirm="false" timetowaitforanswer="10"> 
+         <doc></doc>
+         <maxage>0</maxage>
+         <data hosttype="string" clienttype="string"/>
+   </property>
+   
+  <property name="cameraPosition" requestid="74" transmittable="true" autoconfirm="false" timetowaitforanswer="10"> 
+         <doc></doc>
+         <maxage>0</maxage>
+         <data hosttype="string" clienttype="string"/>
+   </property>
+   
+</protocol>

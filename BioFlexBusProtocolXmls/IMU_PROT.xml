@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<protocol name="IMU_PROT" id="18"> 
+  <property name="acceleration" requestid="20" transmittable="false" autoconfirm="false"> 
+         <doc>the acceleration as measured by the accelerometer</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1000" limit="false"/>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1000" limit="false"/>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1000" limit="false"/>
+  </property>
+  <property name="magneticField" requestid="40" transmittable="false" autoconfirm="false"> 
+         <doc>the magnetic field vector as measured by the magnetometer</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1000" limit="false"/>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1000" limit="false"/>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="1000" limit="false"/>
+  </property>
+  <property name="position" requestid="94" transmittable="false" autoconfirm="false"> 
+         <doc>the position as measured by the inertial measurement unit</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int32" hostlower="0" hostupper="1" clientlower="0" clientupper="1000000" limit="false"/>
+         <data hosttype="float" clienttype="int32" hostlower="0" hostupper="1" clientlower="0" clientupper="1000000" limit="false"/>
+         <data hosttype="float" clienttype="int32" hostlower="0" hostupper="1" clientlower="0" clientupper="1000000" limit="false"/>
+  </property>
+  <property name="rotation" requestid="96" transmittable="false" autoconfirm="false"> 
+         <doc>the rotation as measured by the inertial measurement unit (axis-angle representation using result=axis*angle)</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int32" hostlower="0" hostupper="1" clientlower="0" clientupper="2^(24)" limit="false"/>
+         <data hosttype="float" clienttype="int32" hostlower="0" hostupper="1" clientlower="0" clientupper="2^(24)" limit="false"/>
+         <data hosttype="float" clienttype="int32" hostlower="0" hostupper="1" clientlower="0" clientupper="2^(24)" limit="false"/>
+  </property>
+</protocol>

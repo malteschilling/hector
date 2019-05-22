@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<protocol name="PRESSURE_SENSOR_PROT" id="17"> 
+  <property name="max_value" requestid="4"> 
+         <doc>the highest pressure that is currently measured by one of the cells of the pressure sensor</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="255" limit="false"/>
+  </property>
+  <property name="highestPressure" requestid="10"> 
+         <doc>the highest pressure that is currently measured by one of the cells of the pressure sensor</doc>
+         <maxage>0</maxage>
+         <data hosttype="float" clienttype="int16" hostlower="0" hostupper="1" clientlower="0" clientupper="100" limit="false"/>
+  </property>
+  <property name="id" requestid="64" transmittable="true"> 
+         <doc>the highest pressure that is currently measured by one of the cells of the pressure sensor</doc>
+         <maxage>0</maxage>
+         <data hosttype="uint8" clienttype="uint8" hostlower="0" hostupper="1" clientlower="0" clientupper="1" limit="false"/>
+  </property>
+</protocol>
