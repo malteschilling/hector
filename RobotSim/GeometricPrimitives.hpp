@@ -38,6 +38,7 @@ class GeometricPrimitiveBase
 		std::vector<std::function<void (const CollisionFeedback collisionFeedback)>> CollisionFeedbackForwardFunctions={};
 		
 	public:
+		static float global_alpha;	
 		GeometricPrimitiveBase(const GeometricPrimitiveBase&) = delete;
 		GeometricPrimitiveBase & operator=(const GeometricPrimitiveBase&) = delete;
  

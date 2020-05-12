@@ -63,6 +63,11 @@ dReal BioFlexRotatory::GetSpringConstant(){return this->SpringConstant;};
 void BioFlexRotatory::SetDampingConstant(dReal dampingConstant){this->DampingConstant=dampingConstant;};
 dReal BioFlexRotatory::GetDampingConstant(){return this->DampingConstant;};
 
+void BioFlexRotatory::SetInputPosition(dReal inputPos){
+	this->InputAngle=inputPos;
+	this->OutputAngle=inputPos;
+};
+
 void BioFlexRotatory::PostSimulationStepUpdate(double deltaT){
 	Time+=deltaT;	
 	
@@ -225,7 +230,17 @@ boost::shared_ptr<BfbMessage> BioFlexRotatory::ProcessMessage(boost::shared_ptr<
 				case 82: // set desiredValue_ISC
 					SetInputSpeed(Enc14BitToRad(message->GetPayload()));
 					//std::cout<<"set desiredValue_ISC: "<< Enc14BitToRad(Message->GetPayload())<<std::endl;
+					break;
+					
+//				case 84: // get desiredPos
+//					reply->SetPayload(RadToEnc14Bit(GetInputSpeed()));
+//					//std::cout<<"get desiredValue_ISC: "<< RadToEnc14Bit(GetInputSpeed())<<std::endl;
+//					break;
+				case 86: // set desired Position
+					SetInputPosition(Enc14BitToRad(message->GetPayload()));
+					//std::cout<<"set desiredPos: "<< Enc14BitToRad(message->GetPayload())<<std::endl;
 					break;	
+					
 				default:
 					commandFound=false;
 					break;	

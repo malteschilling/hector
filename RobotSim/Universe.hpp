@@ -3,6 +3,7 @@
 
 // STL includes
 #include <map>
+#include <deque>
 #include <string>
 
 // Boost includes
@@ -25,6 +26,8 @@ typedef std::map<std::string, boost::shared_ptr<Bodies::BaseBody> > StrBodyMap;
 typedef std::map<unsigned char, boost::shared_ptr<BfbClient> > UCharBfbClientMap;
 /** \brief A special map that uses strings as keys and friction coefficients (real numbers) as elements. */
 typedef std::map<std::string, dReal > StrFrictionCoefficientMap;
+
+typedef std::deque<std::vector<double> > InternalModelLineDeque;
 
 struct CollisionData{
 	CollisionData():
@@ -83,6 +86,9 @@ private:
 	/*! \brief A map of all GeometricBody objects within a universe. */
 	StrBodyMap 		BodyMap;
 	UCharBfbClientMap	BfbClientMap;
+	
+	InternalModelLineDeque IntModelLineDeque;
+//	InternalModelPointDeque IntModelEndPointDeque;
 
 	/*! \brief A map of friction values between materials of a universe. */
 	/*! TODO: Implement material dependend friction. */
@@ -117,6 +123,9 @@ public:
 	~Universe();
 	
 	void Clear();
+	
+	void clearIntModelLineDeque();
+	void addIntModelLine(std::vector<double>);
 	
 	/*! \brief Let the dynamics and the collision engines simulate the object interactions for a certain period,
 	 * 	\param deltaT the time the simulation shall run. The value must be positive.

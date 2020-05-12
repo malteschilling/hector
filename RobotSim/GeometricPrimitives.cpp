@@ -17,6 +17,7 @@
 
 namespace GeometricPrimitives{
 // GeometricPrimitiveBase method definitions
+float GeometricPrimitiveBase::global_alpha = 1.0;
 
 	GeometricPrimitiveBase::GeometricPrimitiveBase(doubleArray3 color, std::string material): 
 		Color(color), 
@@ -77,7 +78,7 @@ namespace GeometricPrimitives{
 		dGeomSetData(GeomId, this);
 	};
 	void Sphere::Draw(){
-		dsSetColor( Color[0], Color[1], Color[2] ); 
+		dsSetColorAlpha( Color[0], Color[1], Color[2], global_alpha ); 
 		dsDrawSphere (dGeomGetPosition(GetGeomId()),dGeomGetRotation (GetGeomId()), Radius);
 	};
 	dReal Sphere::GetRadius(){
@@ -94,7 +95,7 @@ namespace GeometricPrimitives{
 		dGeomSetData(GeomId, this);
 	};
 	void Box::Draw(){
-		dsSetColor( Color[0], Color[1], Color[2] ); 
+		dsSetColorAlpha( Color[0], Color[1], Color[2], global_alpha ); 
 		dVector3 temp;
 		dGeomBoxGetLengths(GetGeomId(),temp);
 		dsDrawBox(dGeomGetPosition(GetGeomId()),dGeomGetRotation (GetGeomId()), temp);
@@ -145,7 +146,7 @@ namespace GeometricPrimitives{
 		dGeomSetData(GeomId, this);
 	};
 	void Capsule::Draw(){
-		dsSetColor( Color[0], Color[1], Color[2] ); 
+		dsSetColorAlpha( Color[0], Color[1], Color[2], global_alpha ); 
 		dsDrawCapsule(dGeomGetPosition(GetGeomId()),dGeomGetRotation(GetGeomId()),Length, Radius);
 	};
 	dReal Capsule::GetRadius(){
@@ -170,7 +171,7 @@ namespace GeometricPrimitives{
 		dGeomSetData(GeomId, this);
 	};
 	void Cylinder::Draw(){
-		dsSetColor( Color[0], Color[1], Color[2] ); 
+		dsSetColorAlpha( Color[0], Color[1], Color[2], global_alpha ); 
 		dsDrawCylinder(dGeomGetPosition(this->GetGeomId()),dGeomGetRotation(GetGeomId()),Length, Radius);
 	};
 	dReal Cylinder::GetRadius(){
@@ -227,7 +228,7 @@ namespace GeometricPrimitives{
 
 	
 	void TriMesh::Draw(){
-		dsSetColor( Color[0], Color[1], Color[2] ); 
+		dsSetColorAlpha( Color[0], Color[1], Color[2], global_alpha ); 
 		const dReal* tempPos=dGeomGetPosition(GetGeomId());
 		const dReal* tempRot= dGeomGetRotation(GetGeomId());
 		for(unsigned int faceIndNum=0;faceIndNum < ( this->FaceIndices.size() ); faceIndNum++){
@@ -309,7 +310,7 @@ namespace GeometricPrimitives{
 	//MOtto end
 	
 	void Heightfield::Draw(){
-		dsSetColor( Color[0], Color[1], Color[2] ); 
+		dsSetColorAlpha( Color[0], Color[1], Color[2], global_alpha ); 
 		
 		doubleArray3 a,b,c,d;
 		
@@ -381,7 +382,7 @@ namespace GeometricPrimitives{
 					tempMax2=c[2];
 				};
 				auto color=jet(minimum, maximum, tempMax1);
-				dsSetColor( color[0], color[1], color[2] ); 
+				dsSetColorAlpha( color[0], color[1], color[2], global_alpha ); 
 				
 				//MOtto end
 				dsDrawTriangle(dGeomGetPosition(GetGeomId()),
@@ -392,7 +393,7 @@ namespace GeometricPrimitives{
 					true);
 				// On demand of Marc Otto, the following lines are used to change the color of the triangles the heightfield consists of.
 				color=jet(minimum, maximum, tempMax2);
-				dsSetColor( color[0], color[1], color[2] ); 
+				dsSetColorAlpha( color[0], color[1], color[2], global_alpha ); 
 				//MOtto end
 				dsDrawTriangle(dGeomGetPosition(GetGeomId()),
 					tempRot, 

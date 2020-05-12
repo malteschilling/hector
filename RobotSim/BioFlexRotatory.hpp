@@ -65,6 +65,8 @@ public:
 	bool GetActivation();
 	void SetActivation(bool newActivation);
 	
+	void SetInputPosition(dReal inputPos);
+	
 	void SetInputSpeed(dReal inputSpeed);
 	dReal GetInputSpeed();
 	dReal GetOutputSpeed();

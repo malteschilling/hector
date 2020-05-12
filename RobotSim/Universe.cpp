@@ -15,14 +15,22 @@
 #include "PressureSensor.hpp"
 #include "Universe.hpp"
 
-
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#else
+#include <GL/gl.h>
+#include <GL/glu.h>
+#endif
 
 /*! \brief Class constructor for the Universe class. */
 unsigned int Universe::NumOfInstances=0;
 Universe::Universe():
 	FrictionCoefficientMap(StrFrictionCoefficientMap()),
 	BodyMap(StrBodyMap()),
-	BfbClientMap(UCharBfbClientMap()){	
+//	IntModelEndPointDeque(InternalModelPointDeque()),
+	BfbClientMap(UCharBfbClientMap()),
+    IntModelLineDeque(InternalModelLineDeque()){	
 	NumOfInstances++;
 	if(NumOfInstances==1){ // If this is the first instance of the universe, the physics engine must be explicitly initialized.
 		dInitODE();
@@ -79,6 +87,14 @@ void Universe::Clear(){
 	CreateUniverse();
 }
 
+void Universe::clearIntModelLineDeque(){
+	InternalModelLineDeque().swap(IntModelLineDeque);
+//	InternalModelPointDeque().swap(IntModelEndPointDeque);
+}
+
+void Universe::addIntModelLine(std::vector<double> linePoints){
+	IntModelLineDeque.push_back(linePoints);
+}
 
 // this is called by dSpaceCollide when two objects cin space are
 // potentially colliding.
@@ -208,6 +224,21 @@ void Universe::Draw(){
 	for(StrBodyMap::iterator i=BodyMap.begin();i!=BodyMap.end();i++){
 		i->second->Draw();
 	};
+	if (!IntModelLineDeque.empty()) {
+		glDepthFunc(GL_ALWAYS);
+		for(InternalModelLineDeque::iterator it=IntModelLineDeque.begin(); it!=IntModelLineDeque.end(); it++){
+			//setupDrawingMode();
+			glColor3f (1.,0.,0.);
+			glDisable (GL_LIGHTING);
+			glLineWidth (5);
+			glShadeModel (GL_FLAT);
+			glBegin (GL_LINES);
+			glVertex3d ((*it)[0], (*it)[1], (*it)[2]);
+			glVertex3d ((*it)[3], (*it)[4], (*it)[5]);
+			glEnd();
+			
+		}
+	}
 };
 
 boost::shared_ptr<Bodies::RigidBody> Universe::AddRigidBody(	std::string name,

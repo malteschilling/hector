@@ -3,8 +3,6 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include <boost/algorithm/string.hpp>
-
 
 // Own header files
 #include "DataTypes.hpp"
@@ -17,6 +15,9 @@
 #include "OdeDrawstuff.hpp"
 #include "Universe.hpp"
 
+#include <boost/algorithm/string.hpp>
+#include "OdeDrawstuff.hpp"
+#include <ode/ode.h> 
 
 static std::string geometryXml=""; // The variable that holds the last geometry xml data for all tcp clients.
 std::map<unsigned char, double> relTimerMap;
@@ -97,7 +98,93 @@ boost::shared_ptr<BfbMessage> BfbMessageProcessor::ProcessMessage(boost::shared_
 				universe=GeometryXmlParser::Process(geometryXml,universe);
 				break;
 				};
+			/*case 50:
+				{
+				std::cout << "ASKED FOR NEW POSITION" << std::endl;
+				dRealVector3 tempPosition = *(new dRealVector3());
+				tempPosition.at(0) = 42;*/
+				/*auto tempPosition=GetPosition();
+					for(unsigned int i=0; i<3; i++){
+						tempPosition[i]*=100;
+					};*/
+				/*reply->SetPayload(BfbFunctions::convertDoublesToBytes(boost::assign::list_of<double>(tempPosition.at(0))(tempPosition.at(1))(tempPosition.at(2)), 16, true));
+				break;
+				};*/
+			case 60: // robotTransparency
+				reply->SetPayload(boost::assign::list_of(1));
+					//std::cout<<"get desiredValue_ISC: "<< RadToEnc14Bit(GetInputSpeed())<<std::endl;
+				break;
+			case 62:
+				{
+				short tempInt=0;
+				std::vector<unsigned char> bytes = message->GetPayload();
+				for(unsigned int i=0;i<bytes.size() && i<2;i++){
+					tempInt|=( bytes.at(i)<<(i*8) );
+				};
+				dReal tempDReal=tempInt;
+				//std::cout<<"set transp: "<< tempDReal<<std::endl;
+				GeometricPrimitives::GeometricPrimitiveBase::global_alpha = tempDReal/10000;
+
+				//reply->SetPayload(BfbFunctions::convertDoublesToBytes(boost::assign::list_of<double>(tempPosition.at(0))(tempPosition.at(1))(tempPosition.at(2)), 16, true));
+				break;
+				};
+			case 72:
+				{
+				std::string testString=std::string(reinterpret_cast<char*>(messagePayload.data()), messagePayload.size());
+				std::vector<std::string> strs;
+				//boost::algorithm::split_regex( strs, testString, regex( "]]" ) ) ;
+				boost::split(strs, testString, boost::is_any_of("]"));
+				if (strs.size() > 1) {
+					strs[0] = strs[0].substr(2, strs[0].size()-2);
+					for(unsigned int i=1; i<6; i++) {
+						strs[i] = strs[i].substr(3, strs[i].size()-3);
+					};
+					//for(unsigned int i=0; i<7; i++) {
+					//	std::cout<<"got String: "<< strs[i] << std::endl;
+					//};
 				
+					std::vector<std::string> strsD[6];
+					//boost::algorithm::split_regex( strs, testString, regex( "]]" ) ) ;
+					for(int i=0; i<6; i++){
+						boost::split(strsD[i], strs[i], boost::is_any_of(","));
+					};
+//				for(unsigned int i=0; i<strsD.size(); i++) {
+//					d = std::stod(strsD[i]);
+//					std::cout<<"got double: "<< d << std::endl;
+//				};
+//				dRealVector3 offsetPositionCapsule = (universe->GetBody("MainBody"))->GetPosition();
+//				dRealMatrix3 offsetRotationCapsule = (universe->GetBody("MainBody"))->GetRotation();
+//				doubleArray3 colorCapsule=boost::assign::list_of<dReal>(1)(0)(0);
+				//(universe->GetBody("MainBody"))->AddCapsule(1., 1., offsetPositionCapsule, offsetRotationCapsule, colorCapsule );
+//				dsSetColorAlpha( 1., 0., 0., 1. ); 
+				//double posCapsule[3] = {2., 2., 0.};
+					universe->clearIntModelLineDeque();
+//				boost::shared_ptr<const double *> posCapsule2 = {1., 1., 1.};
+					for(unsigned int i=0; i<strsD[0].size(); i++) {
+						std::vector<double> linePoints {std::stod(strsD[0][i]), std::stod(strsD[1][i]), std::stod(strsD[2][i]), 
+							std::stod(strsD[3][i]), std::stod(strsD[4][i]), std::stod(strsD[5][i])};
+						universe->addIntModelLine(linePoints);
+//					d = std::stod(strsD[i]);
+					//std::cout<<"got double: " << posCapsule2 <<  posCapsule2[1]  << std::stod(strsD[4][i]) << std::endl;
+					};
+				} else {
+					universe->clearIntModelLineDeque();
+				};
+				//std::cout<<"got double: " << posCapsule2[1]  << std::stod(strsD[4][0]) << std::endl;
+//				const double posCapsule[3] = {2., 2., 0.};
+//				const double posCapsule2[3] = {1., 1., 1.};
+				//dsDrawLine(posCapsule,posCapsule2);
+				
+
+				//universe->IntModelStartPointMap.();
+				//universe->IntModelEndPointMap.();
+				
+				//dBodyGetRotation( universe->GetBody("MainBody") );
+				//dsDrawCapsule (posCapsule, dBodyGetRotation( (universe->GetBody("MainBody"))->GetBodyId() ), 1., 1.);
+
+				//reply->SetPayload(BfbFunctions::convertDoublesToBytes(boost::assign::list_of<double>(tempPosition.at(0))(tempPosition.at(1))(tempPosition.at(2)), 16, true));
+				break;
+				};
 			case 76: // Set the position of the camera in the simulation:
 				{
 				std::string testString=std::string(reinterpret_cast<char*>(messagePayload.data()), messagePayload.size());
@@ -128,6 +215,7 @@ boost::shared_ptr<BfbMessage> BfbMessageProcessor::ProcessMessage(boost::shared_
 				}
 				break;
 				};
+			
 		};
 		return reply;
 	}else if(16<=messageDestination && messageDestination<=190){
