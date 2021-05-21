@@ -22,6 +22,7 @@ In order to run the simulation environment (for Mac OS X see below):
 	`source InstallDependencies.sh`
 * You need libode (Open Dynamics Engine) – if it is not installed on your machine: under SharedLibraries use:
 		`source DownloadLatestOde.sh`
+* We are using an older version of boost - newer versions (>= 1.7) seem to have broken pointers, therefore you have to switch to an older version.
 * In the RobotSim folder simply call: `make`
 * Start the simulator window: `./RobotSim`
 
@@ -45,7 +46,8 @@ The simulation environment has been adapted to work under Mac OS X as well – b
 The repository consists of different parts:
 
 * BioFlexBusProtocolXmls, BioFlexServer, FlexLoaderTcp - holds definitions of BioFlexBus protocol and implements the server for the protocol.
-* CommunicationInterface - establishes a connection towards the controller.* RobotSim - the robot simulation environment as such.
+* CommunicationInterface - establishes a connection towards the controller.
+* RobotSim - the robot simulation environment as such.
 
 --
 ### References
